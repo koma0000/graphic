@@ -8,6 +8,8 @@
 
 using namespace HydraLiteMath;
 
+
+
 void RenderScene(uint32_t w, uint32_t h, uint32_t num_samples, const std::vector<std::shared_ptr<GeoObject>> &scene, const Camera &cam, const std::string &filename)
 {
   auto  background_color = float3(0.3f, 0.1f, 0.5f);
@@ -47,8 +49,12 @@ void create_scene()
   Camera        cam(eye, lookat, up, field_of_view, float(w) / float(h));
 
   auto plane1 = std::make_shared<Plane>(float3(+0.0f, -1.0f, +0.0f), float3(0.0f, 1.0f, 0.0f), new IdealMirror(float3(0.3f, 0.3f, 0.3f)));
+  
+  auto Sfera1 = std::make_shared<Sfera>(float3(2.0f, 2.6f, +1.0f), 2.5, new IdealMirror(float3(5.00f, 5.00f, 5.00f)));
+  myScene.push_back(Sfera1);
   myScene.push_back(plane1);
-  RenderScene(w, h,  2, myScene, cam,  "basic_scene");
+   
+  RenderScene(w, h,  1, myScene, cam,  "basic_scene");
 }
 
 int main()
@@ -57,4 +63,6 @@ int main()
 
   return 0;
 }
+
+
 

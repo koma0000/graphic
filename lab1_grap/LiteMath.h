@@ -677,6 +677,8 @@ namespace HydraLiteMath
     return red | (green << 8) | (blue << 16) | (alpha << 24);
   }
 
+
+
   // 
   // 
   // static inline float4 Uint32_BGRAToRealColor(int packedColor)

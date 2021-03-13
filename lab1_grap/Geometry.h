@@ -31,4 +31,22 @@ private:
   float3 normal;
 };
 
+
+class Sfera : public GeoObject   //сфера
+{
+public:
+
+	Sfera (const float3& a_center, const float& a_r, Material* a_m) : GeoObject(a_m), center(a_center), r(a_r), r_sq(a_r* a_r) {}
+	~Sfera() = default;
+
+	bool Intersect(const Ray& ray, float t_min, float t_max, SurfHit& surf) const override;
+
+private:
+	float3 center;
+	float r;
+	float r_sq;
+
+};
+
+
 #endif //RT_SAMPLE_NEW_GEOMETRY_H
