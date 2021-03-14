@@ -49,4 +49,28 @@ private:
 };
 
 
+class Triangle : public GeoObject
+{
+public:
+	Triangle(const float3 A, const float3 B, const float3 C, Material * a_m) : GeoObject(a_m), A(A),B(B),C(C) {}
+	~Triangle() = default;
+	bool Intersect(const Ray & ray, float t_min, float t_max, SurfHit & surf) const override;
+private:
+	float3 A, B, C;
+	float3 normal;
+};
+
+
+class Square : public GeoObject
+{
+public:
+	Square(const float3 A, const float3 B, Material* a_m) : GeoObject(a_m), A(A), B(B) {}
+	~Square() = default;
+	bool Intersect(const Ray& ray, float t_min, float t_max, SurfHit& surf) const override;
+private:
+	float3 A, B;
+	float3 normal;
+};
+
+
 #endif //RT_SAMPLE_NEW_GEOMETRY_H

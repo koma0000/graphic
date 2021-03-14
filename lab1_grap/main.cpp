@@ -44,15 +44,27 @@ void create_scene()
   float3        lookat(0.0f, 2.0f, 0.0f);
   float3        up    (0.0f, 1.0f, 0.0f);
   float         field_of_view = 90.0f;
-  unsigned int  w = 640;
-  unsigned int  h =  480;
+  unsigned int  w = 1366;
+  unsigned int  h =  768;
   Camera        cam(eye, lookat, up, field_of_view, float(w) / float(h));
 
   auto plane1 = std::make_shared<Plane>(float3(+0.0f, -1.0f, +0.0f), float3(0.0f, 1.0f, 0.0f), new IdealMirror(float3(0.3f, 0.3f, 0.3f)));
   
-  auto Sfera1 = std::make_shared<Sfera>(float3(2.0f, 2.6f, +1.0f), 2.5, new IdealMirror(float3(5.00f, 5.00f, 5.00f)));
+  auto Sfera1 = std::make_shared<Sfera>(float3(5.0f, 5.6f, +5.0f), 2.5, new IdealMirror(float3(5.00f, 5.00f, 5.00f)));
+
+  auto Sfera2 = std::make_shared<Sfera>(float3(7.0f, 3.6f, +11.0f), 3.0, new IdealMirror(float3(1.00f, 1.00f, 1.00f)));
+  auto Sfera3 = std::make_shared<Sfera>(float3(0.0f, 6.0f, +10.0f), 1.0, new IdealMirror(float3(1.00f, 1.00f, 1.00f)));
+  auto triangle1 = std::make_shared<Triangle>(float3(1.0f, 1.6f, 1.0f), float3(-1.0f, 1.0f, +5.0f), float3(0.0f, 6.0f, +5.0f), new Diffuse(float3(0.90f, 1.00f, 0.10f)));
+
+  auto kv1 = std::make_shared<Square>(float3(-2.0f, 1.0f, +10.0f), float3(-4.0f, +4.0f, 7.0f), new Diffuse(float3(1.00f, 1.00f, 0.00f)));
+
   myScene.push_back(Sfera1);
   myScene.push_back(plane1);
+  myScene.push_back(triangle1);
+  myScene.push_back(Sfera2);
+  myScene.push_back(Sfera3);
+  myScene.push_back(kv1);
+ 
    
   RenderScene(w, h,  1, myScene, cam,  "basic_scene");
 }

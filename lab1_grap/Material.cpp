@@ -33,3 +33,12 @@ bool IdealMirror::Scatter(const Ray &ray_in, const SurfHit &surf, float3 &attenu
     return (dot(ray_out.d, surf.normal) > 0);
 }
 
+bool Diffuse::Scatter(const Ray& ray_in, const SurfHit& surf, float3& attenuation, Ray& ray_out)
+{
+
+    ray_out = Ray(surf.hitPoint + surf.normal * 1e-4, surf.normal);
+
+    attenuation = color;
+
+    return (dot(ray_out.d, surf.normal) > 0);
+}
