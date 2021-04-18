@@ -79,43 +79,18 @@ bool Triangle::Intersect(const Ray& ray, float t_min, float t_max, SurfHit& surf
     return false;
 }
 
-bool Square::Intersect(const Ray& ray, float tmin, float tmax, SurfHit& surf) const
+bool Square::Intersect(const Ray& ray, float t_min, float t_max, SurfHit& surf) const
 {
-    float3 p1;//вершина квадрата (одна из)
-    float3 n;//нормаль к квадрату
-    float3 e1;//ширина Ќќ вектором
-    float3 e2;//высота (аналогично)
-    p1 = a;
-    e1 = b - a;
-    e2 = c - a;
-    n = cross(e1, e2);
-    float t;
-    t = dot((p1 - ray.o), n) / dot(ray.d, n);
-    if (t >= 0)
+  
+    if (Plane::Intersect(ray, t_min, t_max, surf))
     {
-        float3 intersect_point;
-        intersect_point = (ray.o + ray.d);
-        float3 v;
-        v = intersect_point - p1;
-        float width, height;
-        width = length(e1);
-        height = length(e2);
-        float proj1, proj2;
-        proj1 = dot(v, e1) / width;
-        proj2 = dot(v, e2) / height;
-        if ((proj1 < width && proj1>0) && (proj2 < height && proj2>0))
-        {
-            surf.hit = true;
-            surf.hitPoint = intersect_point;
-            surf.m_ptr = m_ptr;
-            surf.t = length(ray.o - intersect_point);
-            surf.normal = n;
-
-            return true;
-        }
-        else return false;
+        
+        float u, v;
+        u = (surf.hitPoint.x - point.x) / len;
+        v = (surf.hitPoint.y - point.y) / len;
+        return !(u < 0 || v < 0 || u > 1 || v > 1);
     }
-    else { return false; }
+    else  return false;
 }
 
 bool Parallel::Intersect(const Ray& ray, float tmin, float tmax, SurfHit& surf) const

@@ -61,17 +61,16 @@ private:
 };
 
 
-class Square : public GeoObject
-{
+class Square : public Plane {
 public:
-	Square(const float3& a, const float3& b, const float3& c, const float3& d, Material* a_m) : a(a), b(b), c(c), d(d), GeoObject(a_m) {};
+	Square(const float3 a_point, const float& a_len, Material* a_m) : Plane(a_point, float3(0.0f, 0.0f, 1.0f), a_m), len(a_len), point(a_point) {}
 	~Square() = default;
-	bool Intersect(const Ray& ray, float t_min, float t_max, SurfHit& surf) const override;
+
+	bool Intersect(const Ray& ray, float tmin, float tmax, SurfHit& surf) const override;
+
 private:
-	float3 a;
-	float3 b;
-	float3 c;
-	float3 d;
+	float len;
+	float3 point;
 };
 
 

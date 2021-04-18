@@ -50,12 +50,12 @@ void create_scene()
 
   auto plane1 = std::make_shared<Plane>(float3(+0.0f, -1.0f, +0.0f), float3(0.0f, 1.0f, 0.0f), new IdealMirror(float3(0.3f, 0.3f, 0.3f)));
   
-  auto Sfera1 = std::make_shared<Sfera>(float3(+15.0f, 6.0f, 0.0f), 1, new Diffuse(float3(0.0f, 0.0f, 1.0f)));
+  auto Sfera1 = std::make_shared<Sfera>(float3(+15.0f, 6.0f, 0.0f), 1, new IdealMirror(float3(0.0f, 0.0f, 1.0f)));
 
-  auto sphere2 = std::make_shared<Sfera>(float3(-7.5f, +2.0f, +2.5f), 5, new IdealMirror(float3(.80f, 0.0f, 0.5f)));
-  myScene.push_back(sphere2);
+ /* auto sphere2 = std::make_shared<Sfera>(float3(-7.5f, 0.0f, -5.5f), 5, new IdealMirror(float3(.80f, 0.0f, 0.5f)));
+  myScene.push_back(sphere2);*/
 
-  auto sphere3 = std::make_shared<Sfera>(float3(-14.0f,+5.5f,+0.0f), 3, new IdealMirror(float3(1.f, 0.3f, 0.9f)));
+  auto sphere3 = std::make_shared<Sfera>(float3(-14.0f,+7.5f,+0.0f), 3, new IdealMirror(float3(.80f, 0.0f, 0.5f)));
   myScene.push_back(sphere3);
 
   auto parallel = std::make_shared<Parallel>(float3(-1.0f, -0.0f, +1.0f), float3(+4.0f, +3.0f, +4.0f), new Diffuse(float3(1.0f, 0.27f, 0.0f)));
@@ -67,8 +67,8 @@ void create_scene()
   myScene.push_back(triangle1);
 
 
- /* auto square = std::make_shared<Square>(float3(-6.0f, +4.0f, -7.0f), float3(-3.0f, +6.0f, -7.0f), float3(-3.0f, +4.0f, -8.0f), float3(-6.0f, +8.0f, -8.0f), new IdealMirror(float3(0.0f, 0.8f, 0.3f)));
-  myScene.push_back(square);*/
+ auto square = std::make_shared<Square>(float3(-7.0f, 4.0f, -6.0f), float(5.0f), new Diffuse(float3(0.9f, 0.2f, 0.3f)));
+  myScene.push_back(square);
 
   
 
@@ -86,6 +86,58 @@ int main()
 
   return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
