@@ -55,11 +55,15 @@ void create_scene()
  /* auto sphere2 = std::make_shared<Sfera>(float3(-7.5f, 0.0f, -5.5f), 5, new IdealMirror(float3(.80f, 0.0f, 0.5f)));
   myScene.push_back(sphere2);*/
 
-  auto sphere3 = std::make_shared<Sfera>(float3(-14.0f,+7.5f,+0.0f), 3, new IdealMirror(float3(.80f, 0.0f, 0.5f)));
-  myScene.push_back(sphere3);
+  auto sphere2 = std::make_shared<Sfera>(float3(-14.0f,+7.5f,+0.0f), 3, new IdealMirror(float3(.80f, 0.0f, 0.5f)));
+  myScene.push_back(sphere2);
 
   auto parallel = std::make_shared<Parallel>(float3(-1.0f, -0.0f, +1.0f), float3(+4.0f, +3.0f, +4.0f), new Diffuse(float3(1.0f, 0.27f, 0.0f)));
   myScene.push_back(parallel); 
+
+
+  auto sphere3 = std::make_shared<Sfera>(float3(-15.0f, 2.0f, +8.5f), 1.5, new Diffuse(float3(1.0f, 0.0f, 1.0f)));
+myScene.push_back(sphere3);
 
   
 
