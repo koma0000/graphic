@@ -53,5 +53,4 @@ public:
 	float3 color;
 };
 
-
 #endif //RT_SAMPLE_NEW_MATERIAL_H

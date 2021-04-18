@@ -12,6 +12,7 @@ float3 SimpleRT::TraceRay(const Ray & ray, const std::vector<std::shared_ptr<Geo
 
   SurfHit surf;
 
+  //среди геометрии сцены ищем объекты, с которыми пересекается текущий луч и находим ближайшее пересечение
   for (int i = 0; i < geo.size(); ++i)
   {
     SurfHit temp;
@@ -28,6 +29,8 @@ float3 SimpleRT::TraceRay(const Ray & ray, const std::vector<std::shared_ptr<Geo
   }
 
 
+  //если луч не пересек ни один объект, то значит он улетел в фон
+  //вычисляем цвет как градиент цвета фона
   if (geoIndex == -1)
   {
     float3 unit_direction = normalize(ray.d);
@@ -42,14 +45,15 @@ float3 SimpleRT::TraceRay(const Ray & ray, const std::vector<std::shared_ptr<Geo
     surf.normal = -surf.normal;
   }
 
-  Ray scattered;
+
+  Ray scattered;//Луч, который отдалился от нас 
   if(depth < max_ray_depth && surf.m_ptr->Scatter(ray, surf, surfColor, scattered))
   {
     return surfColor * TraceRay(scattered, geo, depth + 1);
   }
   else
   {
-    return float3(0.0f, 0.0f, 0.0f);
+      return surfColor;
   }
 }
 

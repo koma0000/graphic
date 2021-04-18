@@ -64,12 +64,29 @@ private:
 class Square : public GeoObject
 {
 public:
-	Square(const float3 A, const float3 B, Material* a_m) : GeoObject(a_m), A(A), B(B) {}
+	Square(const float3& a, const float3& b, const float3& c, const float3& d, Material* a_m) : a(a), b(b), c(c), d(d), GeoObject(a_m) {};
 	~Square() = default;
 	bool Intersect(const Ray& ray, float t_min, float t_max, SurfHit& surf) const override;
 private:
-	float3 A, B;
-	float3 normal;
+	float3 a;
+	float3 b;
+	float3 c;
+	float3 d;
+};
+
+
+class Parallel : public GeoObject {
+public:
+	Parallel(const float3& a_min, const float3& a_max, Material* a_m) :
+		GeoObject(a_m), t_min(a_min), t_max(a_max) {}
+	~Parallel() = default;
+
+	bool Intersect(const Ray& ray, float tmin, float tmax, SurfHit& surf) const override;
+
+private:
+	float3 t_min;
+	float3 t_max;
+	float r_sq;
 };
 
 
