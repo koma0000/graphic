@@ -52,8 +52,8 @@ void create_scene()
   
   auto Sfera1 = std::make_shared<Sfera>(float3(+15.0f, 6.0f, 0.0f), 1, new Diffuse(float3(0.0f, 0.0f, 1.0f)));
 
-  /*auto sphere2 = std::make_shared<Sfera>(float3(-15.5f, +2.0f, +2.5f), 5, new IdealMirror(float3(.80f, 0.0f, 0.5f)));
-  myScene.push_back(sphere2);*/
+  auto sphere2 = std::make_shared<Sfera>(float3(-7.5f, +2.0f, +2.5f), 5, new IdealMirror(float3(.80f, 0.0f, 0.5f)));
+  myScene.push_back(sphere2);
 
   auto sphere3 = std::make_shared<Sfera>(float3(-14.0f,+5.5f,+0.0f), 3, new IdealMirror(float3(1.f, 0.3f, 0.9f)));
   myScene.push_back(sphere3);
